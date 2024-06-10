@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :admin, skip: [:registration, :passwords], controllers: {
+   devise_for :admin, skip: [:registration, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  
   namespace :admin do
-    get 'admin' => 'homes#top'
+    get 'top' => 'homes#top', as: "top"
     resources :items
     resources :genres
     resources :customers
@@ -13,14 +12,14 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
-    devise_for :customers, skip: [:passwords], cnotrollers: {
+    devise_for :customers, skip: [:passwords], controllers: {
       registrations: "public/registrations",
       sessions: 'public/sessions'
     }
     root to: 'homes#top'
     get 'homes/about' => 'homes#about'
     resources :items, only: [:index, :show]
-    resource :customres
+    resource :customers
     resources :cart_items
     resources :orders
     resources :addresses
