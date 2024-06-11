@@ -1,0 +1,19 @@
+<%= render 'admin/header' %>
+
+<h1>商品一覧</h1>
+
+<%= link_to new_admin_item_path do %>
+    <h1>＋</h1>
+<% end %>
+
+<p> 商品ID</p>
+<p>商品名</p>
+<p>税抜価格</p>
+
+<% @item.each do |item| %>
+    <P><%= item.id %></P>
+    <%= link_to admin_item_path(item.id) do %>
+        <p><%= item.name %></p>
+    <% end %>
+    <p><%= item.price %></p>
+<% end %>
