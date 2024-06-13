@@ -18,8 +18,12 @@ Rails.application.routes.draw do
     }
     root to: 'homes#top'
     get 'homes/about' => 'homes#about'
+    get 'customers/my_page' => 'customers#show'
+    get 'custmoers/infomation/edit' => 'customers#edit'
+    patch 'customers/infomation' => 'customers#update'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
     resources :items, only: [:index, :show]
-    resource :customers
     resources :cart_items
     resources :orders
     resources :addresses
