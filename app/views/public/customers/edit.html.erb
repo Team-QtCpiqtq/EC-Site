@@ -1,2 +1,47 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<%= render 'public/header' %>
+<h1>新規会員登録</h1>
+
+<%= form_with model: @customer, url: customers_infomation_path, method: :patch do |f| %>
+  <%= render "public/shared/error_messages", resource: @customer %>
+
+  <%= f.label :'名前' %>
+  <div class="field">
+    <%= f.label :'(姓)' %>
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :'(名)' %>
+    <%= f.text_field :first_name %>
+  </div>
+  <%= f.label :'フリガナ' %>
+  <div class="field">
+    <%= f.label :'(セイ)' %>
+    <%= f.text_field :last_name_kana %>
+  </div>
+  <div class="field">
+    <%= f.label :'(メイ)' %>
+    <%= f.text_field :first_name_kana %>
+  </div>
+  <div class="field">
+    <%= f.label :'郵便番号(ハイフンなし)' %>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div class="field">
+    <%= f.label :'住所' %>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :'電話番号(ハイフンなし)' %>
+    <%= f.text_field :telephone_number %>
+  </div>
+<div class="field">
+    <%= f.label :'メールアドレス' %>
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "編集内容を保存" %>
+  </div>
+
+  <%= link_to "退会する", customers_unsubscribe_path %>
+<% end %>
