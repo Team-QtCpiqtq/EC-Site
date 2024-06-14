@@ -1,5 +1,5 @@
 <%= render 'public/header' %>
-<h1>新規会員登録</h1>
+<h1>会員情報編集</h1>
 
 <%= form_with model: @customer, url: customers_infomation_path, method: :patch do |f| %>
   <%= render "public/shared/error_messages", resource: @customer %>
@@ -34,7 +34,7 @@
     <%= f.label :'電話番号(ハイフンなし)' %>
     <%= f.text_field :telephone_number %>
   </div>
-<div class="field">
+　<div class="field">
     <%= f.label :'メールアドレス' %>
     <%= f.email_field :email, autocomplete: "email" %>
   </div>

@@ -1,0 +1,16 @@
+<%= render 'admin/header' %>
+
+<h1>会員一覧</h1>
+<p>会員</p>
+<p>氏名</p>
+<p>メールアドレス</p>
+<p>ステータス</p>
+<% @customers.each do |customer| %>
+    <p><%= customer.id %></p>
+    <%= link_to admin_customer_path(customer.id) do %>
+    <p><%= customer.last_name %><%= customer.first_name %></p>
+    <% end %>
+    <p><%= customer.email %></p>
+    <P><%= customer.is_active %></P>
+<% end %>
+
