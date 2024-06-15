@@ -4,3 +4,10 @@
 <h1><%= @item.name %></h1>
 <P><%= @item.introduction %></P>
 <p>￥<%= (@item.price * 1.1).round %>(税込)</p>
+
+<%= form_with model: @cart_item , url: cart_items_path , method: :post do |f| %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.select :amount, *[1..5] %>
+    <%= f.submit "カートに入れる" %>
+<% end %>
+    

@@ -1,16 +1,34 @@
 <%= render 'admin/header' %>
 
+
 <h1>会員一覧</h1>
-<p>会員</p>
-<p>氏名</p>
-<p>メールアドレス</p>
-<p>ステータス</p>
-<% @customers.each do |customer| %>
-    <p><%= customer.id %></p>
-    <%= link_to admin_customer_path(customer.id) do %>
-    <p><%= customer.last_name %><%= customer.first_name %></p>
+<table>
+    <tr>
+        <th><p>会員</p></th>
+        <th><p>氏名</p></th>
+        <th><p>メールアドレス</p></th>
+        <th><p>ステータス</p></th>
+    </tr>
+    
+    <% @customers.each do |customer| %>
+        <tr>
+            <td><p><%= customer.id %></p></td>
+            <td>
+                <%= link_to admin_customer_path(customer.id) do %>
+                <p><%= customer.last_name %><%= customer.first_name %></p>
+                <% end %>
+            </td>
+            <td><p><%= customer.email %></p></td>
+            <td>
+                <% if customer.is_active == true %>
+                    <P>有効</P>
+                <% else %>
+                    <p>退会</p>
+                <% end %>
+            </td>
+        </tr>
     <% end %>
-    <p><%= customer.email %></p>
-    <P><%= customer.is_active %></P>
-<% end %>
+</table>
+
+<%= paginate @customers %>
 
