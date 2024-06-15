@@ -1,7 +1,18 @@
 <%= render 'admin/header' %>
 
+<% if @item.errors.any? %>
+    <%= @item.errors.count %>件のエラーが発生しました
+    <ul>
+        <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+
 <h1>商品新規登録</h1>
 <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+    <p>画像</p>
+    <%= f.file_field :image, accept: "image/*" %>
     <p>商品名</p>
     <%= f.text_field :name %>
     <p>商品説明</p>
