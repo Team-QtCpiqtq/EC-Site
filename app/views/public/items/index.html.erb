@@ -7,7 +7,7 @@
         <%= image_tag item.image, size: "100x100" %><br>
         <P><%= item.name %></P>
     <% end %>
-    <P>￥<%= (item.price * 1.1).round %>(税込)</P>
+    <P>￥<%= item.with_tax_price %>(税込)</P>
 <% end %>
 
 <%= paginate @items %>
