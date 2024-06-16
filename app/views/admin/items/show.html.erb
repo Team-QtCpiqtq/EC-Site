@@ -1,7 +1,8 @@
 <%= render 'admin/header' %>
 
 <h1>商品詳細</h1>
-    
+
+<%= image_tag @item.image, size: "300x300" %>
 <p>商品名</p>
     <p><%= @item.name %></p>
 <p>商品説明</p>
@@ -10,6 +11,6 @@
     税込価格<br>
     (税抜き価格)
 </p>
-    <p><%= (@item.price * 1.1).round(2) %>(<%=@item.price %>)円</p>
+    <p><%= @item.with_tax_price %>(<%=@item.price %>)円</p>
 
 <%= link_to '編集する', edit_admin_item_path %>
